@@ -1,21 +1,27 @@
-import React, { Component } from 'react'
-
+import React, { Component } from "react";
+import * as token from "../services/tokenService";
 
 class Token extends Component {
-    state = {  }
-    render() { 
-        return ( 
+  state = {
+    token: "",
+  };
 
-            <div>
-                
-                <h1>
-                    Token
-                </h1>
-</div>
+  async componentDidMount() {
+    const success = await token.gettoken();
 
+    this.setState({ token: success.data });
+  }
 
-         );
-    }
+  render() {
+    // console.log(this.state.token);
+    return (
+      <div>
+        <table className="table">
+          <thead></thead>
+        </table>
+      </div>
+    );
+  }
 }
- 
+
 export default Token;

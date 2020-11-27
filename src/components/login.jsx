@@ -1,40 +1,37 @@
 import React from "react";
 
+import auth from "../services/authService";
 
-// import auth from "../../services/authService";
-
-
-// import { toast } from "react-toastify";
-// import auth from "../services/authService";
+import { toast } from "react-toastify";
 
 import TextField from "@material-ui/core/TextField";
-// import Button from "@material-ui/core/Button";
+
 import Validation from "./validation";
 import Joi from "joi-browser";
 
 class Login extends Validation {
   state = {
     data: {
-      emailId: "",
+      userid: "",
       password: "",
     },
     errors: {},
   };
 
   schema = {
-    emailId: Joi.string().required(),
+    userid: Joi.string().required(),
     password: Joi.string().required().min(5),
   };
 
   doSubmit = async () => {
     console.log(this.state.data);
     const { data } = this.state;
-//     const success = await auth.login(data);
-//     console.log(success);
-//     if (success) {
-//       toast.success("Successfully login");
-//       window.location = "/";
-//     }
+    const success = await auth.login(data);
+    console.log(success);
+    if (success) {
+      toast.success("Successfully login");
+      window.location = "/home";
+    }
   };
 
   render() {
@@ -42,12 +39,8 @@ class Login extends Validation {
 
     return (
       <div>
-            <div className="row m-5">
-           
-          <div className="col-md-8 ">
-     
-          </div>
-
+        <div className="row m-5">
+          <div className="col-md-8 "></div>
           <div
             className="   float-right "
             // style={{ width: "0%" }}
@@ -60,8 +53,8 @@ class Login extends Validation {
               <h1 className="text-center "> Login</h1>
 
               <TextField
-                name="emailId"
-                label="E-mail"
+                name="userid"
+                label="User Id"
                 color="secondary"
                 size="small"
                 className="m-3 col-xl-10 col-10"
