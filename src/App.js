@@ -9,7 +9,7 @@ import "react-toastify/dist/ReactToastify.css";
 import Token from "./components/token"
 import Login from "./components/login"
 import NavBar from "./components/navbar"
-import "font-awesome/css/font-awesome.css";
+
 import auth from "./services/authService";
 import Logout from "./components/logout"
 
@@ -22,11 +22,6 @@ class App extends Component {
     const user = auth.getCurrentUser();
     this.setState({ user });
   }
- componentDidMount() {
-
-
-  
- }
 
 
 
